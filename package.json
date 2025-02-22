@@ -1,0 +1,50 @@
+{
+  "name": "texaglo",
+  "version": "1.0.0",
+  "description": "Create and manage Token-2022 tokens with vanity addresses",
+  "main": "dist/cli.js",
+  "bin": {
+    "texaglo": "./dist/cli.js"
+  },
+  "scripts": {
+    "clean": "rm -rf node_modules dist target",
+    "build:rust": "cargo build --release --features gpu",
+    "build:ts": "tsc",
+    "build": "npm run build:rust && npm run build:ts",
+    "postbuild": "chmod +x dist/cli.js",
+    "setup:dirs": "mkdir -p admin token_keys seeds",
+    "setup:admin": "solana-keygen new --no-bip39-passphrase --force -o admin/admin_keypair.json",
+    "setup:devnet": "solana config set --url devnet",
+    "setup": "npm run setup:dirs && npm run setup:admin && npm run setup:devnet",
+    "postinstall": "npm run build && npm run setup",
+    "start": "node dist/cli.js",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "solana",
+    "spl-token",
+    "token-2022",
+    "vanity"
+  ],
+  "author": "Texaglo",
+  "license": "ISC",
+  "dependencies": {
+    "@bundlr-network/client": "^0.11.17",
+    "@solana/spl-token": "^0.3.11",
+    "@solana/web3.js": "^1.98.0",
+    "bs58": "^5.0.0",
+    "chalk": "^4.1.2",
+    "commander": "^11.1.0",
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/mime-types": "^2.1.4",
+    "@types/node": "^20.10.4",
+    "@types/node-fetch": "^2.6.11",
+    "@types/ora": "^3.1.0",
+    "ora": "^8.2.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}

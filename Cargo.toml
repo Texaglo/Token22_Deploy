@@ -1,0 +1,45 @@
+[package]
+name = "token22-vanity"
+version = "0.1.0"
+edition = "2021"
+description = "Fast vanity address generator for SPL Token-2022"
+
+[dependencies]
+solana-sdk = "1.17"
+solana-client = "1.17"
+solana-program = "1.17"
+spl-token-2022 = "1.0"
+clap = { version = "4.4", features = ["derive"] }
+tokio = { version = "1.35", features = ["full"] }
+rayon = "1.8"
+base58 = "0.2"
+sha2 = "0.10"
+rand = "0.8"
+anyhow = "1.0"
+log = "0.4"
+env_logger = "0.10"
+metal = "0.27"
+block = "0.1"
+cocoa = "0.25"
+core-foundation = "0.9"
+objc = "0.2"
+hex = "0.4.3"
+num_cpus = "1.16.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+chrono = "0.4"
+
+[features]
+default = []
+gpu = []
+
+[dependencies.cuda-runtime-sys]
+version = "0.3.0-alpha.1"
+optional = true
+
+[dependencies.cuda-driver-sys]
+version = "0.3.0-alpha.1"
+optional = true
+
+[build-dependencies]
+cc = "1.0" 
