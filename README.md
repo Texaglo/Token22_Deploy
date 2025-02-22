@@ -1,14 +1,14 @@
-# Token22 Vanity Token Creator
+# Token22 Vanity Token Creator (Mac Optimized)
 
-A powerful CLI tool for creating SPL Token-2022 tokens with vanity addresses and metadata.
+A powerful CLI tool for creating SPL Token-2022 tokens with vanity addresses and metadata, optimized for Mac systems.
 
 ## Features
 
 - Create SPL Token-2022 tokens with vanity addresses
-  - High-performance end pattern matching using Rust implementation
+  - High-performance end pattern matching using Metal-accelerated Rust implementation
   - Start pattern matching (🚧 Coming Soon - Community Contribution Welcome!)
   - Case-sensitive and case-insensitive pattern matching
-  - GPU acceleration for end pattern matching (on supported systems)
+  - Metal GPU acceleration for end pattern matching (Mac-optimized)
 - Automatic metadata initialization
   - Support for custom metadata
   - Arweave storage for metadata
@@ -16,54 +16,27 @@ A powerful CLI tool for creating SPL Token-2022 tokens with vanity addresses and
 - Multi-threaded CPU search
 - Progress tracking and performance metrics
 - Supports both Devnet and Mainnet
-- Trading bot for supply management
 
-## Trading Bot Configuration
+## Premium Features (Coming Soon) 🌟
 
-The trading bot manages token supply through controlled expansion and contraction phases:
-
-### Supply Management Parameters
-- Maximum Supply: 100 million tokens
-- Admin Buffer: 20% above community balance
-- Expansion Trigger: When supply falls 10% below target
-- Decimals: 6 (all amounts multiplied by 10^6)
-
-### Phase Switching Logic
-1. **Expansion → Contraction**
-   - Triggers when total supply reaches 100M tokens
-   - Aims to reduce supply while maintaining price stability
-
-2. **Contraction → Expansion**
-   - Triggers when supply falls below target threshold
-   - Target = Community Balance + (Community Balance × 20%)
-   - Expansion starts when supply < (Target × 0.9)
-
-### Trading Amounts
-
-#### Expansion Phase
-- Mint Amount: Previous mint × 1.2 (20% increase)
-- Burn Amount: 20% of minted amount
-- Maximum Mint: 2M tokens per operation
-- Net Expansion: ~16% per cycle
-
-#### Contraction Phase
-- Burn Amount: 15% of excess supply or admin balance (whichever is lower)
-- Mint Amount: 80% of burned amount
-- Net Contraction: ~3% per cycle
-
-### Safety Features
-- Minimum SOL balance checks
-- Transaction retry logic
-- Error handling and logging
-- Automatic state recovery
-- Dynamic target calculation based on community balance
+### For Paid Members
+- Automated Trading Bot for Supply Management
+  - Smart supply expansion and contraction
+  - Automated liquidity management
+  - Price stability mechanisms
+  - Community balance tracking
+  - Custom trading strategies
+- Advanced Analytics Dashboard
+- Priority Support
+- Early Access to New Features
 
 ## Prerequisites
 
-1. Node.js and npm installed
-2. Solana CLI tools installed
-3. Rust toolchain installed (for GPU acceleration)
-4. A funded Solana wallet (for transaction fees)
+1. macOS system (Metal-capable GPU required for acceleration)
+2. Node.js and npm installed
+3. Solana CLI tools installed
+4. Rust toolchain installed (for GPU acceleration)
+5. A funded Solana wallet (for transaction fees)
 
 ## Cost Considerations
 
@@ -80,8 +53,8 @@ The trading bot manages token supply through controlled expansion and contractio
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/token22
-cd token22
+git clone https://github.com/Texaglo/Token22_Deploy
+cd Token22_Deploy
 
 # Install dependencies
 npm install
@@ -102,25 +75,11 @@ solana config set --url mainnet-beta  # for production
 # Create a token with address ending with "gems"
 texaglo create --pattern gems --position end --name "Gems Token" --symbol "GEMS" --description "A token ending in gems" --mint 1000000
 
-# Use GPU acceleration (if available)
+# Use Metal GPU acceleration
 texaglo create --pattern dao --position end --name "DAO Token" --symbol "DAO" --description "A DAO token" --gpu
 
 # Case insensitive search
 texaglo create --pattern COOL --position end --name "Cool Token" --symbol "COOL" --description "A cool token" --case-insensitive
-```
-
-### Managing Token Supply
-
-```bash
-# Start the trading bot
-node src/trading-bot.js
-
-# Monitor supply
-texaglo supply <token-address>
-
-# Manual operations if needed
-texaglo mint <token-address> <amount>
-texaglo burn <token-address> <amount>
 ```
 
 ### Updating Metadata
@@ -135,9 +94,9 @@ texaglo revoke <token-address>
 
 ## Performance
 
-The tool uses optimized Rust implementation for end pattern matching:
+The tool uses Metal-optimized Rust implementation for end pattern matching:
 - Multi-threaded CPU search
-- GPU acceleration on supported systems (Metal on macOS)
+- Metal GPU acceleration
 - Optimized batch processing
 
 Typical Performance for End Patterns:
@@ -168,8 +127,8 @@ If you'd like to contribute to this feature, please check the issues section or 
 ## Directory Structure
 
 ```
-token22/
-├── src/              # TypeScript source files
+Token22_Deploy/
+├── src/              # TypeScript and Rust source files
 ├── token_keys/       # Generated keypair files
 ├── admin/           # Admin wallet directory
 ├── target/          # Compiled Rust binaries
@@ -186,7 +145,7 @@ token22/
 
 ### Priority Areas for Contribution
 1. Start Pattern Matching Implementation
-2. Additional GPU Optimizations
+2. Additional Metal GPU Optimizations
 3. Enhanced Error Handling
 4. Testing Framework
 5. Network Configuration Management
@@ -232,4 +191,4 @@ node upload.js
 
 ## License
 
-ISC License
+MIT License - see LICENSE file for details
